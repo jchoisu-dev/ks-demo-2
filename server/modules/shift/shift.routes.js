@@ -1,0 +1,12 @@
+const router = require("express").Router();
+const controller = require("./shift.controller");
+const authenticate = require("@/shared/middleware/auth.middleware");
+const authorize = require("@/shared/middleware/authorize.middleware");
+const { ROLE_ADMIN } = require("@/shared/constants");
+router.get("/all", authenticate, controller.getAllShifts);
+router.get("/", authenticate, controller.getShifts);
+router.get("/:id", authenticate, controller.getByShiftId);
+router.post("/", authenticate, authorize(ROLE_ADMIN), controller.createShift);
+router.put("/:id", authenticate, authorize(ROLE_ADMIN), controller.updateShift);
+router.delete("/:id", authenticate, authorize(ROLE_ADMIN), controller.deleteShift);
+module.exports = router;

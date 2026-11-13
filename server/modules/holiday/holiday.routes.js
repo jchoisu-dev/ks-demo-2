@@ -1,0 +1,11 @@
+const router = require("express").Router();
+const controller = require("./holiday.controller");
+const authenticate = require("@/shared/middleware/auth.middleware");
+const authorize = require("@/shared/middleware/authorize.middleware");
+const { ROLE_ADMIN } = require("@/shared/constants");
+router.get("/", authenticate, controller.getHolidays);
+router.get("/:id", authenticate, controller.getByHolidayId);
+router.post("/", authenticate, authorize(ROLE_ADMIN), controller.createHoliday);
+router.put("/:id", authenticate, authorize(ROLE_ADMIN), controller.updateHoliday);
+router.delete("/:id", authenticate, authorize(ROLE_ADMIN), controller.deleteHoliday);
+module.exports = router;

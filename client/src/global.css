@@ -1,0 +1,107 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+:root {
+  --accent: #a46023;
+  --accent-foreground: #ffffff;
+  --field-border: #e5e7eb;
+  --field-border-width: 1px;
+  --field-border-hover: #d1d5db;
+  --field-border-focus: #a46023;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #111827;
+}
+
+@keyframes loader-breathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(0.97); }
+}
+
+@keyframes loader-bar {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+.timesheet {
+  height: calc(100vh - 35px);
+}
+
+.radio__control {
+  background: #a46023;
+}
+
+.tabs__indicator {
+  background: #a46023;
+}
+
+.image-upload {
+  width: 100%;
+}
+
+.image-upload input {
+  display: none;
+}
+
+.image-upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 180px;
+
+  border: 2px dashed #d1d5db;
+  border-radius: 16px;
+
+  background: #f9fafb;
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.image-upload-box:hover {
+  border-color: #a46023;
+  background: #fdf8f3;
+}
+
+.image-upload-box:active {
+  transform: scale(0.99);
+}
+
+.image-upload-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+
+  border-radius: 50%;
+  background: #f6ebe1;
+
+  color: #a46023;
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.image-upload-title {
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.image-upload-text {
+  margin-top: 4px;
+  color: #9ca3af;
+  font-size: 12px;
+}

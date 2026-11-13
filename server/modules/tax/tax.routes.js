@@ -1,0 +1,14 @@
+const router = require("express").Router();
+const controller = require("./tax.controller");
+const authenticate = require("@/shared/middleware/auth.middleware");
+const authorize = require("@/shared/middleware/authorize.middleware");
+const { ROLE_ADMIN } = require("@/shared/constants");
+router.get("/", authenticate, controller.listVersions);
+router.get("/current", authenticate, controller.getCurrent);
+router.get("/payroll", authenticate, controller.getPayrollOptions);
+router.put("/payroll", authenticate, authorize(ROLE_ADMIN), controller.updatePayrollOptions);
+router.post("/preview", authenticate, controller.preview);
+router.post("/", authenticate, authorize(ROLE_ADMIN), controller.createVersion);
+router.put("/:id", authenticate, authorize(ROLE_ADMIN), controller.updateVersion);
+router.delete("/:id", authenticate, authorize(ROLE_ADMIN), controller.deleteVersion);
+module.exports = router;

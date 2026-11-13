@@ -1,0 +1,224 @@
+
+.ts-status-present  { --ts-bg: #ecfdf3; --ts-border: #abefc6; --ts-text: #067647; --ts-bar: #17b26a; }
+.ts-status-overtime { --ts-bg: #fffaeb; --ts-border: #fedf89; --ts-text: #b54708; --ts-bar: #f79009; }
+.ts-status-absent   { --ts-bg: #fef3f2; --ts-border: #fecdca; --ts-text: #b42318; --ts-bar: #f04438; }
+.ts-status-leave    { --ts-bg: #f4f3ff; --ts-border: #d9d6fe; --ts-text: #5925dc; --ts-bar: #7a5af8; }
+.ts-status-sick     { --ts-bg: #fdf2fa; --ts-border: #fcceee; --ts-text: #c11574; --ts-bar: #ee46bc; }
+.ts-status-holiday  { --ts-bg: #eff8ff; --ts-border: #b2ddff; --ts-text: #175cd3; --ts-bar: #2e90fa; }
+
+.attendance-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.attendance-table {
+  width: 100%;
+  min-width: 980px;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.attendance-table th {
+  padding: 12px 6px;
+  background: #fafaf9;
+  border-bottom: 1px solid #ececea;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+}
+
+.attendance-table td {
+  padding: 6px;
+  border-bottom: 1px solid #f1f1ef;
+  background: #fff;
+  vertical-align: middle;
+}
+
+.attendance-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.attendance-table tbody tr:hover td {
+  background: #fcfbfa;
+}
+
+.attendance-table th.weekend,
+.attendance-table td.weekend {
+  background: #fbfbfa;
+}
+
+.attendance-table th.today {
+  background: #f6ebe1;
+  color: #7a4719;
+}
+
+.attendance-table td.today {
+  background: #fdf8f3;
+}
+
+.employee-column {
+  width: 230px;
+  text-align: left !important;
+  padding-left: 16px !important;
+}
+
+.attendance-table th.employee-column,
+.attendance-table td.employee {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.attendance-table td.employee {
+  padding-left: 16px;
+  box-shadow: inset -1px 0 0 #f1f1ef;
+}
+
+.total-column {
+  width: 92px;
+}
+
+.attendance-cell {
+  position: relative;
+  width: 100%;
+  min-height: 58px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 8px 8px 8px 12px;
+
+  background: var(--ts-bg, #fff);
+  border: 1px solid var(--ts-border, #e5e7eb);
+  border-radius: 10px;
+
+  color: var(--ts-text, #374151);
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.attendance-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--ts-bar, transparent);
+}
+
+.attendance-cell:hover {
+  box-shadow: 0 2px 8px rgb(17 24 39 / 0.08);
+  transform: translateY(-1px);
+}
+
+.attendance-cell:focus-visible {
+  outline: 2px solid #a46023;
+  outline-offset: 2px;
+}
+
+.attendance-cell .cell-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+
+.attendance-cell .cell-time {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+}
+
+.attendance-cell .cell-time > span {
+  white-space: nowrap;
+}
+
+.attendance-cell .cell-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.attendance-cell .cell-tag {
+  flex-shrink: 0;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #fef0c7;
+  color: #b54708;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.attendance-cell.empty {
+  align-items: center;
+  border-style: dashed;
+  border-color: #e5e7eb;
+  background: transparent;
+  color: #c4c4c0;
+}
+
+.attendance-cell.empty::before {
+  display: none;
+}
+
+.attendance-cell.empty .cell-add {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.attendance-cell.empty:hover {
+  border-color: #a46023;
+  color: #a46023;
+  box-shadow: none;
+}
+
+.attendance-cell.empty:hover .cell-add,
+.attendance-cell.empty:focus-visible .cell-add {
+  opacity: 1;
+}
+
+@media (max-width: 1023px) {
+  .attendance-table {
+    min-width: 860px;
+  }
+
+  .employee-column {
+    width: 150px;
+    padding-left: 10px !important;
+  }
+
+  .attendance-table td.employee {
+    padding-left: 10px;
+  }
+
+  .total-column {
+    width: 72px;
+  }
+
+  .attendance-table th {
+    padding: 10px 4px;
+  }
+
+  .attendance-table td {
+    padding: 4px;
+  }
+
+  .attendance-cell {
+    padding: 6px 4px 6px 9px;
+  }
+
+  .attendance-cell .cell-time {
+    font-size: 11px;
+  }
+}

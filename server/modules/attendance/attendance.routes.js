@@ -1,0 +1,11 @@
+const router = require("express").Router();
+const controller = require("./attendance.controller");
+const authenticate = require("@/shared/middleware/auth.middleware");
+const authorize = require("@/shared/middleware/authorize.middleware");
+const { EDITOR_ROLES } = require("@/shared/constants");
+router.get("/", authenticate, controller.getAttendances);
+router.get("/:employeeId", authenticate, controller.getEmployeeAttendance);
+router.post("/", authenticate, authorize(EDITOR_ROLES), controller.createAttendance);
+router.put("/:id", authenticate, authorize(EDITOR_ROLES), controller.updateAttendance);
+router.delete("/:id", authenticate, authorize(EDITOR_ROLES), controller.deleteAttendance);
+module.exports = router;

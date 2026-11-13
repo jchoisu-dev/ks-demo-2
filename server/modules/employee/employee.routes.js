@@ -1,0 +1,11 @@
+const router = require("express").Router();
+const { getEmployees, getByEmployeeId, createEmployee, updateEmployee, deleteEmployee } = require("./employee.controller");
+const authenticate = require("@/shared/middleware/auth.middleware");
+const authorize = require("@/shared/middleware/authorize.middleware");
+const { EDITOR_ROLES } = require("@/shared/constants");
+router.get("/", authenticate, getEmployees);
+router.get("/:id", authenticate, getByEmployeeId);
+router.post("/", authenticate, authorize(EDITOR_ROLES), createEmployee);
+router.put("/:id", authenticate, authorize(EDITOR_ROLES), updateEmployee);
+router.delete("/:id", authenticate, authorize(EDITOR_ROLES), deleteEmployee);
+module.exports = router;

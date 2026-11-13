@@ -1,0 +1,27 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import service from "../services";
+import { useAppDispatch } from "@/app/store";
+import { setModalPending, closeModal } from "@/app/store/slices/modal";
+import toast from 'react-hot-toast';
+import i18n from '@/app/i18n';
+export const useCreateShift = () => {
+  const dispatch = useAppDispatch();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: service.createShift,
+
+    onMutate: () => {
+      dispatch(setModalPending(true));
+    },
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["shifts"]
+      });
+      toast.success(i18n.t('shift.created'));
+      dispatch(closeModal());
+    },
+    onError: (error) => {
+    }
+  });
+};

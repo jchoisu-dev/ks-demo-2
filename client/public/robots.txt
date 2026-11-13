@@ -1,0 +1,3 @@
+# Private application for a single client - not for search engines.
+User-agent: *
+Disallow: /

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <g transform="translate(200 78)">
+    <circle r="56" fill="#a46023"/>
+    <path d="M-38 -6 q12 -12 25 0 t25 0 t25 0" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+    <path d="M-38 16 q12 -12 25 0 t25 0 t25 0" fill="none" stroke="#f6ebe1" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="200" y="182" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#3b2410" letter-spacing="1">Brightwater</text>
+  <text x="200" y="218" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="600" fill="#a46023" letter-spacing="5">HR · PAYROLL DEMO</text>
+</svg>

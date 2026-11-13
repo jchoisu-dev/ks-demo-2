@@ -1,0 +1,8 @@
+FROM node
+WORKDIR /server
+COPY package.json .
+RUN npm install
+COPY . .
+ENV NODE_ENV=production
+EXPOSE 5000
+CMD ["node","server.js"]

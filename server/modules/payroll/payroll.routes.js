@@ -1,0 +1,14 @@
+const router = require("express").Router();
+const controller = require("./payroll.controller");
+const authenticate = require("@/shared/middleware/auth.middleware");
+const authorize = require("@/shared/middleware/authorize.middleware");
+const { EDITOR_ROLES } = require("@/shared/constants");
+router.get("/", authenticate, controller.overview);
+router.get("/export", authenticate, controller.exportXlsx);
+router.post("/pdf", authenticate, controller.pdf);
+router.get("/delivery", authenticate, controller.deliveryOptions);
+router.post("/email", authenticate, authorize(EDITOR_ROLES), controller.emailPayslip);
+router.post("/email-all", authenticate, authorize(EDITOR_ROLES), controller.emailAllPayslips);
+router.get("/bank-file", authenticate, authorize(EDITOR_ROLES), controller.bankFile);
+router.post("/sign-pdf", authenticate, authorize(EDITOR_ROLES), controller.signPdf);
+module.exports = router;

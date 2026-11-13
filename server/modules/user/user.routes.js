@@ -1,0 +1,11 @@
+const router = require("express").Router();
+const controller = require("./user.controller");
+const authenticate = require("@/shared/middleware/auth.middleware");
+const authorize = require("@/shared/middleware/authorize.middleware");
+const { ROLE_ADMIN } = require("@/shared/constants");
+router.get("/", authenticate, authorize(ROLE_ADMIN), controller.getUsers);
+router.post("/", authenticate, authorize(ROLE_ADMIN), controller.createUser);
+router.put("/:id", authenticate, authorize(ROLE_ADMIN), controller.updateUser);
+router.put("/:id/password", authenticate, authorize(ROLE_ADMIN), controller.resetPassword);
+router.delete("/:id", authenticate, authorize(ROLE_ADMIN), controller.deleteUser);
+module.exports = router;
