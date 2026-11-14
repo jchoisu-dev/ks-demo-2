@@ -7,7 +7,7 @@ import { ReduxProvider, QueryProvider, ToasterProvider } from '@/app/providers';
 import ModalGlobal from './shared/components/modal';
 import "./app/i18n";
 import { startDevtoolsGuard } from "./shared/utils/devtoolsGuard";
-startDevtoolsGuard();
+// startDevtoolsGuard();
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
     <ReduxProvider>
