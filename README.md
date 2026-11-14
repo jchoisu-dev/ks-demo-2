@@ -404,7 +404,7 @@ npm run dev                        # http://localhost:9000
 
 # 2. Web app
 cd ../client
-cp .env.example .env               # VITE_PUBLIC_BACKEND_URL=http://localhost:9000/api
+cp .env.example .env               # PUBLIC_BACKEND_URL=http://localhost:9000/api
 npm install
 npm run dev                        # http://localhost:3000
 ```

@@ -7,15 +7,17 @@ require("./database");
 const { connectDB, env } = require("./config");
 const app = require("./app");
 const PORT = env.PORT || 9000;
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "ok"
-  });
-});
+// app.get("/health", (req, res) => {
+//   res.status(200).json({
+//     status: "ok"
+//   });
+// });
+// const seedAdmin = require("./database/seeders/admin.seed");
+
 const startServer = async () => 
 {
   await connectDB();
-
+  // await seedAdmin();
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
