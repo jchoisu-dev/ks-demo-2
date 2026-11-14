@@ -1,6 +1,23 @@
-# HR Payroll
+# HR Payroll (Demo)
 
-A web app for running a small company's HR and payroll: employees, timesheets, holidays, leave, payroll runs, payslips (PDF, e-signature, email), payouts, tax settings and an audit log.
+> [!WARNING]
+> **This project is for demonstration only.** It is not production-ready software and must not be used to run a real payroll or HR process without guidance from the author and review by a qualified payroll or tax professional.
+>
+> - The sample data is made up. This includes the company name, address and contacts in [`shared/constants`](server/shared/constants/index.js).
+> - Pay and tax calculations have not been audited. Payslips, tax deductions and bank files produced by this app are not legal or financial documents.
+> - Tax rules change. The tables included are examples and may be out of date.
+> - No warranty is given. You use it at your own risk.
+
+> [!IMPORTANT]
+> **Built for the Suriname market.** The HR and tax rules follow Surinamese practice and will not be correct for other countries without significant changes:
+>
+> - **Taxes:** Surinamese wage tax (*loonbelasting*) brackets with a tax-free allowance, a separate overtime tax, a special-payments rate, and exemptions for holiday allowance, bonus and child allowance. The default tax table references *S.B. 2024 no. 2*, effective 1 July 2025.
+> - **Contributions:** AOV (state old-age pension), plus pension and health insurance with employee and employer shares.
+> - **Currencies:** SRD (Surinamese dollar) is the main currency, with USD and EUR exchange rates kept in the app.
+> - **Time zone:** the company clock is fixed at UTC−3 (Suriname time).
+> - **Pay practices:** hourly, daily, weekly and monthly pay types, weighted Saturday/Sunday days and overtime rates, as is common in local employment.
+
+A demo web app showing how a small Surinamese company could run HR and payroll: employees, timesheets, holidays, leave, payroll runs, payslips (PDF, e-signature, email), payouts, tax settings and an audit log.
 
 The repository has two parts, each its own git repository (tracked here as submodules):
 
@@ -187,7 +204,7 @@ Main rules (in [`payroll.utils.js`](server/modules/payroll/payroll.utils.js)):
 - **Hourly and daily** pay is regular time × rate. If the employee has full attendance and a `incentive_weekdays` rate, that rate is used instead.
 - **Weekly and monthly** pay is fixed. Pay for absent scheduled days is deducted.
 - **Overtime** is weighted by the configured overtime rates. It can be paid on the base rate (`overtimeOnBaseRate`) or on the effective rate.
-- **Tax** is optional (a payroll setting). Tax tables have versions with an `effectiveFrom` date, and the version in force at the end of the period is applied. The default brackets follow Surinamese rules (wage tax, overtime tax, AOV, pension, health insurance).
+- **Tax** is optional (a payroll setting). Tax tables have versions with an `effectiveFrom` date, and the version in force at the end of the period is applied. The defaults in [`tax.utils.js`](server/modules/tax/tax.utils.js) model the Surinamese system: wage tax, overtime tax, special payments, AOV, pension and health insurance. They are demo values. Check them against current Surinamese law before relying on any result.
 
 ### Payroll period locking
 
@@ -331,6 +348,9 @@ flowchart LR
 ---
 
 ## Running locally
+
+> [!NOTE]
+> These steps are for trying the demo on your own machine. Don't deploy it for real employees or real payroll data without guidance (see the warning at the top).
 
 Requirements: Node 20 or newer and a MongoDB instance.
 
