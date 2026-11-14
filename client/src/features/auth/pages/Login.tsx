@@ -45,7 +45,7 @@ const Login = () =>
           render={({ field, fieldState }) => {
             return <Input 
               label={t("auth.email")}
-              placeholder={t("auth.emailPlaceholder")}
+              placeholder={"demo@gmail.com"}
               fieldState={fieldState}
               isRequired
               {...field}
@@ -59,7 +59,7 @@ const Login = () =>
           render={({ field, fieldState }) => {
             return <Input 
               label={t("auth.password")}
-              placeholder={t("auth.passwordPlaceholder")}
+              placeholder={"123123"}
               fieldState={fieldState}
               isRequired
               type={passwordIsVisible ? "text" : "password"}
