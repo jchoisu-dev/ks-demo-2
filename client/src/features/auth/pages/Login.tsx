@@ -59,7 +59,7 @@ const Login = () =>
           render={({ field, fieldState }) => {
             return <Input 
               label={t("auth.password")}
-              placeholder={"123123"}
+              placeholder={"12345678"}
               fieldState={fieldState}
               isRequired
               type={passwordIsVisible ? "text" : "password"}
